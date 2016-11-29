@@ -1,0 +1,108 @@
+// Curso -> JavaScript - Tamplating (Plantillas)
+
+.// Que son las plantillas?
+
+	.Es la combinacion de la informacion y el diseño
+	.La informacion y la presentacion se mantienen separados uno del otro
+	.Se usa para dar formato a los elementos que se repiten
+	.Permite diversos grados de control y flexibilidad entre los motores
+
+	Comunmente en javascript para representar cierta informacion hicimos mas de una vez de esta forma:
+
+	var htmlStr = "<div class='cardInfo'>" +
+				"<div>" + person.Name + "</div>" +
+				"<div>" + person.Phone + "</div>" +
+				"<div>" + person.Address + "</div>" +
+				"<div>";
+
+	Se complica representar la informacion de esta forma y no es la optima forma para hacerlo.
+	En cambio lo que queremos hacer es tener una plantilla para los datos(informacion) para que se vea de la siguiente manera.
+
+	->Datos>>>
+		{
+			Name: "Ivan Lopez",
+			Phone: "555-1234",
+			Address: "Anytown, US"
+		}
+	->Plantilla>>
+		<div>
+			<div>{{Name}}</div>
+			<div>{{Phone}}</div>
+			<div>{{Address}}</div>
+		</div>
+	Motor de Plantilla combina la informacion con la plantilla para obtener >>
+		<div>
+			<div>Ivan Lopez</div>
+			<div>555-1234</div>
+			<div>Anytown, US</div>
+		</div>
+
+	El motor de la plantilla evalua la informacion y la ingresa en la plantilla, para mostrar por la pantalla el resultado final.
+
+.// Una rapida encusta sobre los motores de plantillado --
+
+	Hoy en dia hay un monton de diferentes herramientas de plantillas para JavaScript, pero vamos a ver a los mejorcitos del mercado.
+		.jQuery Plantilla
+		.Mustache
+		.Handlebars
+		.Dust
+
+	./jQuery Plantilla
+		.bastante facil de aprender y usar
+		.jQuery lo corre en el tiempo de ejecucion subyacente
+		.es bueno para plantillas simples a intermedias
+
+	./Mustache
+		.Ampliamente disponible para diferentes lenguajes(JavaScript, Python, PHP, JAVA)
+		.Posee una sintaxis simple
+		.Es facil de extenderlo a nuestras necesidades
+
+	./Handlebars
+		.Es un superconjunto del sistema de plantillado de Mustache
+		.Posee varias mejoras
+		.Las planillas se pueden pre-compilar para mejorar el rendimiento
+
+	./Dust
+		.Es poderoso, pero es mas complejo que otros motores de plantillado
+		.Actualmente el desarrollo lo hace Linkedin
+		.Es asincronico
+		.Posee muchas funciones de ayuda
+		.Es complicado de extender a las necesidades
+
+.// Requisitos para el curso
+	.Usar un editor de texto de preferencia
+	.Instalar Node.js
+
+
+.- * jQuery Template(planillas) * -.
+.// Obtener y usar jQuery Template
+	
+	.es una libreria de plantillas para jQuery
+	.es un plugin para jQuery que aprovecha la sintaxis de jQuery
+	.plantillado simple - no hay condiciones o logica
+	.usa una simple sintaxis para dar formato a la informacion
+	.puede agrupar los conjuntos de datos mas grandes
+
+	El plugin se descarga de la pagina de github de este link:
+		https://github.codepb/jquery-template
+
+	Requisito para usar 
+		jquery.loadTemplate.js
+	Tambien necesitamos el arvhivo de jquery
+		jquery-version.js
+
+===============================================
+Crear un nuevo proyecto en Git
+	Pasos:
+		echo "# javascript" >> README.md
+		git init
+		git add README.md
+		git commit -m "first commit"
+		git remote add origin https://github.com/appwebcoder/javascript.git
+		git push -u origin master
+
+
+
+
+
+
