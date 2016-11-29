@@ -103,6 +103,56 @@ Crear un nuevo proyecto en Git
 
 
 
+.// Definir la plantilla de jQuery
+    1. Crear el elemnto <script>
+        <script type="text/html" id="templateID">
+            <div class="contentWrapper">
+                <div data-content="field1"></div>
+                <div data-content="field2"></div>
+                <div data-content="field3"></div>
+            </div>
+        </script>
+    2. Agregar el type = "text/html"
+        Lo hace es crear es un contenedor que podemos usar para sostener la plantilla que
+        podemos recuperar usando el DOM dentro del navegador. Como la etiqueta del
+        <script> posee el tipo de text/html, el navegador no intentara ejecutar ningun codigo
+        de javascript que se encuentra dentro de la etiqueta <script>.
+    3. Agregar el id
+        el id es el identificador de la plantilla
+    4. Agregar el contenido de la plantilla de html
+        Dentro del elemento <script> agregar la plantilla de html que se va a usar pra
+        presentar la informacion
 
+    La manera que se usa para indicar a jQuery Template como se va a organizar la informacion en la planilla
+    la planilla de jQuery es usando el atributo data-content="" y luego vamos a definir que
+    informacion va a contener cada elemento declarando el valor del atributo
 
+    En el ejemplo si tenemos un json con esta informacion que se va a visualizar en la plantilla
+    creada mas arriba.
+    {
+        "field1" : "algun texto",
+        "field2" : 100,
+        "field3" : "otro texto"
+    }
+    El contenido de los campos del json sera puesto dentro de los divs donde se encuentra definido
+    el atributo data-content=""
+
+    De este modo definimos la plantilla y la informacion que va a contener la plantilla tenemos que
+     ejecutar y traducir/renderizar(render) la plantilla de jQuery
+
+.// Renderizar la plantilla jQuery
+
+    Dentro del documento tenemos que definir donde se va a posicionar el contenido renderizado.
+    Entonces:
+        Definimos la plantilla:
+            <script type="text/html" id="templateID">
+                <!-- el contenido de la plantilla -->
+            </script>
+        Ubicamos la plantilla dentro del documento HTML
+            <div id="ContainerID">
+                <!-- Aqui va el contenido de la plantilla renderizada -->
+            </div>
+
+        Nos falta llamar a la funcion .loadTemplate() usando la sintaxis de jquery
+            $('ContainerID').loadTemplate('templateID', data);
 

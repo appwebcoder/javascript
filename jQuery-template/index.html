@@ -25,11 +25,56 @@
   <body>
     <h1>Hello, world!</h1>
 
+    <div id="ContainerID">
+        <!-- Aqui va el contenido de la plantilla renderizada -->
+    </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- jQuery Template Library -->
     <script src="jquery.loadTemplate.min.js"></script>
+
+    <script type="text/javascript">
+        function renderizarPlantilla(e) {
+            $('#contactos').loadTemplate($('plantillaContactos'), [{
+                "nombre"    : "Henry Ford",
+                "telefono"  : "+1-212-555-1234",
+                "correo"    : "henry@ford.com",
+                "titulo"    : "Fundador de Ford",
+                "tiempoCompleto"    : true
+            }, {
+                "nombre"    : "Henry Ford",
+                "telefono"  : "+1-212-555-1234",
+                "correo"    : "henry@ford.com",
+                "titulo"    : "Fundador de Ford",
+                "tiempoCompleto"    : true
+            }, {
+                "nombre"    : "Henry Ford",
+                "telefono"  : "+1-212-555-1234",
+                "correo"    : "henry@ford.com",
+                "titulo"    : "Fundador de Ford",
+                "tiempoCompleto"    : true
+            }, {
+                "nombre"    : "Henry Ford",
+                "telefono"  : "+1-212-555-1234",
+                "correo"    : "henry@ford.com",
+                "titulo"    : "Fundador de Ford",
+                "tiempoCompleto"    : true
+            }]);
+        }
+        window.addEventListener("load", renderizarPlantilla);
+    </script>
+
+    <!-- jQyery Template -->
+    <script type="text/html" id="plantillaContactos">
+        <div class="contentWrapper">
+            <div data-content="nombre"></div>
+            <div data-content="telefono"></div>
+            <div data-content="correo"></div>
+            <div data-content="titulo"></div>
+        </div>
+    </script>
   </body>
 </html>
