@@ -153,6 +153,105 @@ Crear un nuevo proyecto en Git
                 <!-- Aqui va el contenido de la plantilla renderizada -->
             </div>
 
-        Nos falta llamar a la funcion .loadTemplate() usando la sintaxis de jquery
+        Nos hace falta llamar a la funcion .loadTemplate() usando la sintaxis de jquery
             $('ContainerID').loadTemplate('templateID', data);
+
+    Podemos usar la plantilla decalarad desde un archivo externo y para esto tenemos que
+        crear un archivo html e incluir dentro de su cuerpo la plantilla que vamos a utlizar.
+        Nuestro archivo ejemplo.html quedaria asi:>
+            <div class="contentWrapper">
+                <div data-content="field1"></div>
+                <div data-content="field2"></div>
+                <div data-content="field3"></div>
+            </div>
+        Ahora ejecutamos el plugin indicando la ubicacion de la plantilla que en este caso
+        esta en el archivo ejemplo.html
+            $('ContainerID').loadTemplate('ruta/ejemplo.html', data);
+
+.// Usando formateadores
+
+        jQyery Template tiene una caracteristica que permite definir simples
+                funciones llamadas formateadores.
+        formateadores son una simples funciones que permiten transformar el valor de los
+            datos del campo de datos.
+        Entonces los formateadores pueden agarrar el valor del campo de dato y puede darle
+            un formato o transformarlo de alguna manera.
+
+        1. Definimos una funcion formateadora usando la funcion addTemplateFormatter, que va
+            a tomar el valor y lo va a transformar.
+            $.addTemplateFormatter("UpperCaseFormatter",
+                    function (value, options) {
+                        return value.toUpperCase();
+                    });
+            En este ejemplo defenimos el formateador con el nombre de "UpperCaseFormatter" que sera
+                una funcion que recibe 2 argumentos, el primer arguemnto es el valor que va
+                a ser transformado/formateado, que proviene de la informacion pasada a jQuery
+                Template. El segundo argumento son opciones que podemos pasar al formateador.
+
+        Para usar la funcion formateadora tenemos que:
+            .agregar el atributo data-format="" al campo cuyo dato que se quiere formatear
+            .agregar el atributo data-format-options="option data", es opcional y todo lo que
+                agreguemos en el valor de este atributo pasara al argumento options de la
+                funcion formateadora
+
+        2. Aplicamos la funcion formateadora dentro de la plantilla
+            <div class="contentWrapper">
+                <div data-content="field1"></div>
+                <div data-content="field2"></div>
+                <div data-content="field3" data-format="UpperCaseFormatter"
+                data-format-options="option data"></div>
+            </div>
+
+.// paginacion con jQuery Template
+
+    Vamos a ver como crear las plantillas paginadas y algunas opciones de vinculacion.
+    Primero veamos como podemos crear plantillas paginadas y para esto vamos a volver a ver
+    la funcion loadTemplate("templateId", data, options):
+        .1er parametro: determinamos la ubicacion de la plantilla, el id del elemento o la ruta
+            del archivo externo
+        .2o parametro: es un objeto json que contiene los datos o la infomracion a la que se
+            quiere aplicar la plantilla
+        .3er parametro: es un objeto que permite definir las opciones de como se van a cargar
+            los datos/informacion en la pagina que tiene paginacion
+
+    Veamos el objeto de opciones
+    var opciones = {
+        paged: true,    // activar paginacion
+        pageNo: 1,      // mostrar la pagina inicial
+        elemPerPage: 5  // total elementos por pagina a mostrar en cada paginacion
+    }
+
+.// Opciones de vinculacion de jQuery Template
+
+    Las opciones de vinculacion de jQuery Template permiten vincular/juntar la informacion.
+
+        prepend:    Inserta el contenido templado al principio del contenedor de plantilla
+                        en lugar de reemplazar el contenido
+        append:     Pone el contenido al final del contenedor de plantilla
+
+    Por defecto al llamar la funcion loadTemplate, jQuery Template reemplaza la informacion
+    dentro del contendor que se encuentra en la pagina donde va la plantilla.
+    Y esto puede ser un gran problema cuando la informacion proviene de diferentes fuentes,
+    porque una va a reemplazar la otra y no es lo que queremos. En lugar de reemplazar la informacion
+    queremos agregar al principio o al final del contenedor que contiene la plantilla.
+
+    jQuery tambien tiene algunas funciones callback():
+    funcion callback: es la funcion de devolucion de llamada
+
+        complete(): la funcion de devolucion de llamada es llamada despues de insertar
+                        los datos/informacion dentro de la plantilla. A esta funcion
+                        no le interesa el resultado de la insercion si fue exitosa o
+                        si fallo la insercion dentro de la plantilla.
+
+        success():  la funcion de devolucion de llamada es ejecutada despues de que
+                        la informacion fue insertada con exito dentro de la plantilla
+
+        error():    la funcion de devolucion de llamada es ejecutada cuando ocurre un error
+                        al insertar la informacion dentro de la plantilla
+
+        beforeInsert()  :   la funcion de devolucion de llamada es ejecutada antes de
+                                insertar la informacion dentro de la plantilla
+
+        beforeInsert()  :   la funcion de devolucion de llamada es ejecutada despues de
+                                        insertar la informacion dentro de la plantilla
 

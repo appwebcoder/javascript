@@ -12,9 +12,6 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,44 +20,74 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+        <div class="container">
+            <div class="page-header">
+                <h1>Plantillas con jQuery <small>usando libreria jQuery Template</small></h1>
+            </div>
 
-    <div id="ContainerID">
-        <!-- Aqui va el contenido de la plantilla renderizada -->
-    </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Lista de Contactos</h3>
+                </div>
+                <!-- Table -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#id</th>
+                            <th>Nombre</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Titulo</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactos">
+                    <!-- Aqui va el contenido de la plantilla renderizada -->
+                    </tbody>
+                </table>
+
+                <div class="panel-footer">Total: 4</div>
+            </div>
+
+
+        </div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- jQuery Template Library -->
-    <script src="jquery.loadTemplate.min.js"></script>
+    <script src="js/jquery.loadTemplate.min.js"></script>
 
     <script type="text/javascript">
         function renderizarPlantilla(e) {
-            $('#contactos').loadTemplate($('plantillaContactos'), [{
-                "nombre"    : "Henry Ford",
-                "telefono"  : "+1-212-555-1234",
-                "correo"    : "henry@ford.com",
-                "titulo"    : "Fundador de Ford",
+            $('#contactos').loadTemplate($('#plantillaContactos'), [{
+                "id"        : "1",
+                "nombre"    : "Laura Hernandez",
+                "telefono"  : "+54 11 15-2354-1111",
+                "correo"    : "laura@hernandez.com",
+                "titulo"    : "Administracion de Empresas",
                 "tiempoCompleto"    : true
             }, {
-                "nombre"    : "Henry Ford",
-                "telefono"  : "+1-212-555-1234",
-                "correo"    : "henry@ford.com",
-                "titulo"    : "Fundador de Ford",
+                "id"        : "2",
+                "nombre"    : "Alex Lopez",
+                "telefono"  : "+54 11 15-2411-1111",
+                "correo"    : "alex@lopez.com",
+                "titulo"    : "Arquitecto",
                 "tiempoCompleto"    : true
             }, {
-                "nombre"    : "Henry Ford",
-                "telefono"  : "+1-212-555-1234",
-                "correo"    : "henry@ford.com",
-                "titulo"    : "Fundador de Ford",
+                "id"        : "3",
+                "nombre"    : "Fernando Gago",
+                "telefono"  : "+54 11 15-2101-1111",
+                "correo"    : "fernando@gago.com",
+                "titulo"    : "Bombero",
                 "tiempoCompleto"    : true
             }, {
-                "nombre"    : "Henry Ford",
-                "telefono"  : "+1-212-555-1234",
-                "correo"    : "henry@ford.com",
-                "titulo"    : "Fundador de Ford",
+                "id"        : "4",
+                "nombre"    : "Kevin Baloo",
+                "telefono"  : "+54 11 15-2510-0101",
+                "correo"    : "kevin@baloo.com",
+                "titulo"    : "Programador coder",
                 "tiempoCompleto"    : true
             }]);
         }
@@ -69,12 +96,13 @@
 
     <!-- jQyery Template -->
     <script type="text/html" id="plantillaContactos">
-        <div class="contentWrapper">
-            <div data-content="nombre"></div>
-            <div data-content="telefono"></div>
-            <div data-content="correo"></div>
-            <div data-content="titulo"></div>
-        </div>
+        <tr>
+            <td data-content="id"></td>
+            <td data-content="nombre"></td>
+            <td data-content="telefono"></td>
+            <td data-content="correo"></td>
+            <td data-content="titulo"></td>
+        </tr>
     </script>
   </body>
 </html>
