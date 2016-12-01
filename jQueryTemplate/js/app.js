@@ -8,7 +8,7 @@ $("document").ready(function() {
     var templateData = null;
 
     function getData() {
-        $.getJSON('plantillaData.json', function (data) {
+        $.getJSON('empleados.json', function (data) {
            templateData = data;
            renderTemplate(templateData, currentPage);
         });
